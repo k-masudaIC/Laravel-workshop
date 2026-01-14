@@ -14,12 +14,15 @@ RUN apt-get update && apt-get install -y \
 # Composerインストール
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
+WORKDIR /var/www/src
 
-COPY . /var/www
+COPY src /var/www/src
+
+# composer installを実行
+RUN composer install --no-dev --optimize-autoloader
 
 # 権限設定
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/src
 
 EXPOSE 9000
 CMD ["php-fpm"]
