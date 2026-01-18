@@ -9,7 +9,8 @@ class HelloController extends Controller
 {
     public function index()
     {
-        return view('hello.index');
+        $data = ['msg' => 'Hello, World!'];
+        return view('hello.index', $data);
     }
 
 }
