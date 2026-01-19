@@ -20,29 +20,18 @@
 
 <body>
     <h1>Blade/Index</h1>
-    <p>&#064;forディレクティブの例</p>
+    <p>&#064;whileディレクティブの例</p>
     <ol>
-        @for ($i = 0; $i < count($data); $i++)
-        @if( $i % 2==1 )
-            @continue
-        @elseif($i <=10)
-            <li>No. {{ $data[$i] }}</li>
-        @else
-            @break
-        @endif
-        @endfor
+        @php
+        $i = 0;
+        @endphp
+        @while ($i < count($data))
+        <li>{{ $data[$i] }}</li>
+        @php
+        $i++;
+        @endphp
+        @endwhile
     </ol>
-    <p>&#064;$loopの例</p>
-    <ol>
-        @foreach ($data as $item)
-        @if( $loop->first)
-        <p>-- start --</p>
-        @endif
-            <li>No. {{$loop->iteration}}. {{ $item }}</li>
-        @if( $loop->last)
-        <p>-- end --</p>
-        @endif
-        @endforeach
 </body>
 
 </html>
