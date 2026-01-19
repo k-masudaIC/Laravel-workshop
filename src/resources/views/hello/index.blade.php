@@ -1,37 +1,16 @@
-<html>
+@extends('layouts.helloapp')
 
-<head>
-    <title>Hello</title>
-    <style>
-        body {
-            font-size: 16pt;
-            color: #999;
-        }
+@section('title', 'Index')
 
-        h1 {
-            font-size: 50pt;
-            text-align: right;
-            color: #f6f6f6;
-            margin: -20px 0px -30px 0px;
-            letter-spacing: -4pt;
-        }
-    </style>
-</head>
+@section('menubar')
+    @parent
+    インデックスページ
+@endsection
 
-<body>
-    <h1>Blade/Index</h1>
-    <p>&#064;whileディレクティブの例</p>
-    <ol>
-        @php
-        $i = 0;
-        @endphp
-        @while ($i < count($data))
-        <li>{{ $data[$i] }}</li>
-        @php
-        $i++;
-        @endphp
-        @endwhile
-    </ol>
-</body>
+@section('content')
+<p>ここが本文のコンテンツです</p>
+<p>必要なだけ記述できます</p>
+@endsection
 
-</html>
+@section('footer')
+@endsection

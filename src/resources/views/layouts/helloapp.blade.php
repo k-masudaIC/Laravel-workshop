@@ -15,8 +15,8 @@
     </head>
     <body>
         <h1>@yield('title')</h1>
-        @secction('menubar')
-        <h2 class="menutitle">メニュー</h2>
+        @section('menubar')
+        <h2 class="menutitle">※メニュー</h2>
         <ul>
             <li>@show</li>
         </ul>
