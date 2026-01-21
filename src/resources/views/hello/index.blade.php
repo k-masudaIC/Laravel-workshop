@@ -9,8 +9,14 @@
 
 @section('content')
     <p>ここが本文のコンテンツです</p>
-    <p>Controller value<br>'message' = {{$message}}</p>
-    <p>viewComposer value<br>'view_message' = {{ isset($view_message) ? $view_message : '' }}</p>
+    <table>
+        @foreach ($data as $item)
+        <tr>
+            <td>{{ $item['name'] }}</td>
+            <td>{{ $item['mail'] }}</td>
+        </tr>
+        @endforeach
+    </table>
 
 @endsection
 
