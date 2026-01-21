@@ -8,16 +8,10 @@
 @endsection
 
 @section('content')
-<p>ここが本文のコンテンツです</p>
-<p>必要なだけ記述できます</p>
-@component('components.message')
-    @slot('msg_title')
-        お知らせ
-    @endslot
-    @slot('msg_content')
-        これはメッセージコンポーネントのサンプルです。
-    @endslot
-@endcomponent
+    <p>ここが本文のコンテンツです</p>
+    <p>必要なだけ記述できます</p>
+    @include('components.message', ['msg_title'=>'こんにちは', 'msg_content'=>'これはサブビューの表示です。'])
+
 @endsection
 
 @section('footer')
