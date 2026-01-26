@@ -8,13 +8,15 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('post.store') }}" method="post">
+    <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <label for="title">Title:</label>
+        <label for="title">タイトル:</label>
         <input type="text" id="title" name="title"><br>
-        <label for="body">Content:</label>
+        <label for="body">本文:</label>
         <textarea id="body" name="body"></textarea><br>
-        <input type="submit" value="Create">
+        <label for="image">画像:</label>
+        <input type="file" id="image" name="image"><br>
+        <input type="submit" value="投稿">
     </form>
 @endsection
 

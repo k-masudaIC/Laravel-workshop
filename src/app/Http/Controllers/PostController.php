@@ -36,8 +36,19 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $post = Post::create($validated);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
+
+        $post = Post::create([
+            'title' => $validated['title'],
+            'body' => $validated['body'],
+            'image_path' => $imagePath,
+        ]);
         return redirect()->route('post.show', $post->id);
     }
 
@@ -54,9 +65,18 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $post = Post::findOrFail($id);
-        $post->update($validated);
+
+        $data = [
+            'title' => $validated['title'],
+            'body' => $validated['body'],
+        ];
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $request->file('image')->store('images', 'public');
+        }
+        $post->update($data);
         return redirect()->route('post.show', $post->id);
     }
 
