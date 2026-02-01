@@ -74,11 +74,11 @@ public function post(Request $request)
 
     public function show(Request $request)
     {
-        $id = $request->id;
-        $items = DB::table('people')->where('id', '<=', $id)->get();
-        return view('hello.show', ['items' => $items]);
+        $name = $request->name;
+        $item = DB::table('people')
+        ->where('name', 'like', '%' . $name . '%')
+        ->orWhere('mail', 'like', '%' . $name . '%')
+        ->get();
+        return view('hello.show', ['items' => $item]);
     }
 }
-
-
-
