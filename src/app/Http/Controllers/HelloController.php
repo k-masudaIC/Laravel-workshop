@@ -64,11 +64,19 @@ public function post(Request $request)
         $item = DB::select('select * from people where id = :id', $param);
         return view('hello.del', ['form' => $item[0]]);
     }
+
     public function remove(Request $request)
     {
         $param = ['id' => $request->id];
         DB::delete('delete from people where id = :id', $param);
         return redirect('/hello');
+    }
+
+    public function show(Request $request)
+    {
+        $id = $request->id;
+        $item = DB::table('people')->where('id', $id)->first();//getメソッドでなくfirstメソッドを使うと1レコードだけ取得
+        return view('hello.show', ['item' => $item]);
     }
 }
 
