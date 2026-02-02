@@ -16,4 +16,16 @@ class Person extends Model
     {
         return $query->where('name', $str);
     }
+
+    //ageが$n以上のデータを取得するスコープ
+    public static function scopeAgeGreaterThan($query, $n)
+    {
+        return $query->where('age', '>=', $n);
+    }
+
+    //ageが$n以下のデータを取得するスコープ
+    public static function scopeAgeLessThan($query, $n)
+    {
+        return $query->where('age', '<=', $n);
+    }
 }
