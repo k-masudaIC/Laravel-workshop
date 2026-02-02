@@ -74,11 +74,11 @@ public function post(Request $request)
 
     public function show(Request $request)
     {
-        $name = $request->name;
-        $item = DB::table('people')
-        ->where('name', 'like', '%' . $name . '%')
-        ->orWhere('mail', 'like', '%' . $name . '%')
-        ->get();
-        return view('hello.show', ['items' => $item]);
+        $min = $request->min;
+        $max = $request->max;
+        $items = DB::table('people')
+            ->whereRaw('age >= ? AND age <= ?', 
+            [$min, $max])->get();
+        return view('hello.show', ['items' => $items]);
     }
 }
