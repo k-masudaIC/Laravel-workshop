@@ -10,4 +10,10 @@ class Person extends Model
     {
         return $this->id . ': ' . $this->name . ' (' . $this->age . '歳)';
     }
+
+    //nameが$strと等しいデータを取得するスコープ
+    public static function scopeNameEqual($query, $str)
+    {
+        return $query->where('name', $str);
+    }
 }
