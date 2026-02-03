@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        //グローバルミドルウェア
+        // $middleware->append(\App\Http\Middleware\HelloMiddleware::class);
+
+        //グループミドルウェア
+        $middleware->group('hello', [
+            \App\Http\Middleware\HelloMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
