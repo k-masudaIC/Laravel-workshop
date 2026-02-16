@@ -12,12 +12,13 @@ Route::get('/', function () {
 Route::get('hello', [HelloController::class, 'index']);
 Route::post('hello', [HelloController::class, 'post']);
 
-
-// Post CRUD
-Route::get('posts', [PostController::class, 'index'])->name('post.index');
-Route::get('posts/create', [PostController::class, 'create'])->name('post.create');
-Route::post('posts', [PostController::class, 'store'])->name('post.store');
-Route::get('posts/{id}', [PostController::class, 'show'])->name('post.show');
-Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
-Route::put('posts/{id}', [PostController::class, 'update'])->name('post.update');
-Route::delete('posts/{id}', [PostController::class, 'delete'])->name('post.delete');
+Route::get('hello/add', [HelloController::class, 'add']);
+Route::post('hello/add', [HelloController::class, 'create']);
+Route::get('hello/edit/{id}', [HelloController::class, 'edit']);
+Route::post('hello/edit/{id}', [HelloController::class, 'update']);
+Route::get('hello/del/{id}', [HelloController::class, 'del']);
+Route::post('hello/del/{id}', [HelloController::class, 'remove']);
+Route::get('hello/show/{id}', [HelloController::class, 'show']);
+Route::get('person', [PersonController::class, 'index']);
+Route::get('person/find', [PersonController::class, 'find']);
+Route::post('person/find', [PersonController::class, 'search']);
